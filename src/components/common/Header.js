@@ -11,6 +11,8 @@ return (
          <IndexLink to="/about" activeClassName ="active" >About </IndexLink>
          {" | "}
          <IndexLink to="/tictac" activeClassName ="active" >TicTac </IndexLink>
+         {" | "}
+         <IndexLink to="/basic" activeClassName ="active" >Examples </IndexLink>
          </nav>
 );
 
