@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 // for mock api
-import AuthorApi from '../api/mockCourseApi';
+import AuthorApi from '../api/mockAuthorApi';
 export function loadAuthorsSuccess(authors)
 {
     //debugger ;  
