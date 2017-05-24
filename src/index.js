@@ -7,12 +7,16 @@ import {Provider} from 'react-redux';
 
 import {Router,browserHistory} from 'react-router';
 import routes from './routes';
+import {loardCourses} from './actions/courseActions';
+import {loardAuthors} from './actions/authorActions';
 import './styles/styles.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './styles/index.css';
 
 const store = configureStore();
-
+// loading data from  actions
+store.dispatch(loardCourses());
+store.dispatch(loardAuthors());
 render(
     <Provider store = {store}>
     <Router history={browserHistory} routes={routes} />
