@@ -20,7 +20,7 @@ return(
 
 };
 
-CourseListRow.PropTypes = {
+CourseListRow.propTypes = {
 course: PropTypes.object.isRequired
 };
 

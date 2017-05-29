@@ -3,7 +3,7 @@
 import {combineReducers} from 'redux';
 import courses from './courseReducer';
 import authors from './authorReducer';
-//adding new reducers to rootreducer
+//adding new reducers and combine to rootreducer 
 const rootReducer = combineReducers({
 
 courses ,

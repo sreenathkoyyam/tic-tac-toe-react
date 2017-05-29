@@ -8,7 +8,9 @@ const CourseList = ({courses}) =>
    
 return (
 <table className="table" >
-    <thread>
+    <tbody>
+    
+        
     <tr>
 
 <th>Title</th>
@@ -17,8 +19,8 @@ return (
 <th>Length</th>
 
     </tr>
-    </thread>
-
+ 
+</tbody>
     <tbody>
         {
             courses.map(course=>
@@ -31,7 +33,7 @@ return (
 );
 };
 
-CourseList.PropTypes = {
+CourseList.propTypes = {
     courses : PropTypes.array.isRequired
 };
  export default CourseList;
