@@ -4,7 +4,8 @@ import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 //import * as authorActions from '../../actions/authorActions';
 import CourseForm from './CourseForm.js';
-
+// for notifications
+import toastr from 'toastr';
 
 class ManageCoursesPage extends React.Component
 {
@@ -14,6 +15,7 @@ constructor(props,context){
 super(props,context);
 this.state ={
     course:Object.assign({},this.props.course),
+    saving:false,
     errors :{}
 };
 
@@ -38,9 +40,20 @@ updateCourseState(event){
 //course save event
 saveCourse(event){
     event.preventDefault();
-    this.props.actions.saveCourse(this.state.course);
+    this.setState({saving:true});
+    this.props.actions.saveCourse(this.state.course)
+    .then(() => this.redirect())
+    .catch(error => {
+        toastr.error(error);
+          this.setState({saving:false});
+    });
     //redirecting to course page
-    this.context.router.push('/courses');
+    
+}
+redirect(){
+this.setState({saving:false});
+toastr.success('Course Saved');
+this.context.router.push('/courses');
 }
 
 //render functon for load course
@@ -54,6 +67,7 @@ allAuthors = {this.props.authors}
 onChange = {this.updateCourseState}
 onSave ={this.saveCourse}
 course = {this.state.course}
+saving = {this.state.saving}
 errors ={this.state.errors} />
 </div>
 
@@ -91,7 +105,8 @@ function mapStateToProps (state, ownProps){
 
  const courseId = ownProps.params.id; //from the path 'course/:id'
    let course = {id: '',watchHref: '',title: '',authorId: '',length: '',category: ''};
-if (courseId, state.courses.length > 0 ){
+if (courseId && state.courses.length > 0 ){
+   // debugger;
     course = getCourseById(state.courses, courseId)
 }
 

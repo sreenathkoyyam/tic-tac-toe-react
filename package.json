@@ -25,7 +25,8 @@
     "react-router-redux": "4.0.4",
     "redux": "3.5.2",
     "redux-thunk": "2.0.1",
-    "toastr": "2.1.2",
+    "toastr": "^2.1.2",
+    "toster": "0.0.22",
     "webpack": "^1.13.0"
   },
   "devDependencies": {
